@@ -1,14 +1,10 @@
-import mongoose, {Mongoose} from "mongoose";
+import mongoose, { Mongoose } from 'mongoose';
 
 const MONGODB_URL = process.env.MONGODB_URL;
 
-if (!MONGODB_URL) {
-    throw new Error('Please define the MONGODB_URI environment variable in your .env file');
-  }
-
-interface MongooseConnection{
-    conn: Mongoose | null;
-    promise: Promise<Mongoose> | null;
+interface MongooseConnection {
+  conn: Mongoose | null;
+  promise: Promise<Mongoose> | null;
 }
 
 let cached: MongooseConnection = (global as any).mongoose
