@@ -1,7 +1,7 @@
 /* eslint-disable prefer-const */
 /* eslint-disable no-prototype-builtins */
 import { type ClassValue, clsx } from "clsx";
-var qs = require('qs');
+import qs from 'qs'
 import { twMerge } from "tailwind-merge";
 
 import { aspectRatioOptions } from "@/constants";
@@ -58,7 +58,7 @@ export const formUrlQuery = ({
   key,
   value,
 }: FormUrlQueryParams) => {
-  const params = { ...qs.parse(searchParams.toString()), [key]: value };
+  const params = { ...qs.parse(searchParams.toString()) , [key]: value };
 
   return `${window.location.pathname}?${qs.stringify(params, {
     skipNulls: true,
