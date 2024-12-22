@@ -1,6 +1,6 @@
 "use server";
 
-import connect from "../database/mongoose";
+import connect from "@/db";
 import User from "../database/models/user.model";
 
 
