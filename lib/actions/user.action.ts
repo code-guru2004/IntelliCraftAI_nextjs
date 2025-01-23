@@ -1,5 +1,6 @@
 "use server";
 
+import { revalidatePath } from "next/cache";
 import User from "../database/models/user.model";
 import connect from "../database/mongoose";
 
@@ -13,14 +14,37 @@ export async function createUser(user: any) {
   }
 }
 
-export async function updateUser(id:string,user: UpdateUserParams) {
+export async function updateUser(clerkId: string, user: UpdateUserParams) {
   try {
     await connect();
-    const updatedUser = await User.findOneAndUpdate({id},user,{
-      new:true,
-    })
+
+    const updatedUser = await User.findOneAndUpdate({ clerkId }, user, {
+      new: true,
+    });
+
     if (!updatedUser) throw new Error("User update failed");
+
     return JSON.parse(JSON.stringify(updatedUser));
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function deleteUser(clerkId: string) {
+  try {
+    await connect();
+
+    const userToDelete = await User.findOne({ clerkId });
+
+    if (!userToDelete) {
+      throw new Error("User not found");
+    }
+
+    // Delete user
+    const deletedUser = await User.findByIdAndDelete(userToDelete._id);
+    revalidatePath("/");
+
+    return deletedUser ? JSON.parse(JSON.stringify(deletedUser)) : null;
   } catch (error) {
     console.log(error);
   }
