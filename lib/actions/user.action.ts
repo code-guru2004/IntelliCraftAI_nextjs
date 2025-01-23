@@ -12,3 +12,16 @@ export async function createUser(user: any) {
     console.log(error);
   }
 }
+
+export async function updateUser(id:string,user: UpdateUserParams) {
+  try {
+    await connect();
+    const updatedUser = await User.findByIdAndUpdate(id,user,{
+      new:true,
+    })
+    if (!updatedUser) throw new Error("User update failed");
+    return JSON.parse(JSON.stringify(updatedUser));
+  } catch (error) {
+    console.log(error);
+  }
+}
