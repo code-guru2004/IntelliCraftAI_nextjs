@@ -1,8 +1,11 @@
+import { UserProfile } from '@clerk/nextjs'
 import React from 'react'
 
 function ProfilePage() {
   return (
-    <div>ProfilePage</div>
+    <div>
+      UserProfile
+      </div>
   )
 }
 
