@@ -16,7 +16,7 @@ export async function createUser(user: any) {
 export async function updateUser(id:string,user: UpdateUserParams) {
   try {
     await connect();
-    const updatedUser = await User.findByIdAndUpdate(id,user,{
+    const updatedUser = await User.findOneAndUpdate({id},user,{
       new:true,
     })
     if (!updatedUser) throw new Error("User update failed");
