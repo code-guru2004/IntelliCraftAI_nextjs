@@ -10,7 +10,8 @@ import { redirect } from "next/navigation";
 import { auth } from '@clerk/nextjs/server'
 
 
-const AddTransformationTypePage:React.FC<SearchParamProps> = async ({ param }) => {
+
+export const AddTransformationTypePage: React.FC<SearchParamProps> = async ({ param }) => {
   const transformation = transformationTypes[param?.type];
   const { userId } = await auth()
   
@@ -36,4 +37,5 @@ const AddTransformationTypePage:React.FC<SearchParamProps> = async ({ param }) =
   )
 }
 
-export default AddTransformationTypePage
+// export default AddTransformationTypePage
+
