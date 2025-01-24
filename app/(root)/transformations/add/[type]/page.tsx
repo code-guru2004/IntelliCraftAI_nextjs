@@ -10,10 +10,10 @@ import { redirect } from "next/navigation";
 import { auth } from '@clerk/nextjs/server'
 
 interface SearchParamProps {
-  params: Promise<{ 
+  params: {
     id: string; 
     type: TransformationTypeKey; 
-  }>;
+  };
 }
 const AddTransformationTypePage = async ({ params: { type } }: SearchParamProps) => {
   const transformation = transformationTypes[type];
