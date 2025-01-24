@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -36,6 +36,7 @@ export const formSchema = z.object({
 
 function TransformationForm({action  , data = null , userId , type , creditBalance} : TransformationFormProps) {
 
+  const [Iamge, setIamge] = useState(data)
     const transformationType = transformationTypes[type];
 
     const initialValues= data && action === 'Update' ? {
