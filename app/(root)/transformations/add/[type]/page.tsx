@@ -10,8 +10,8 @@ import { redirect } from "next/navigation";
 import { auth } from '@clerk/nextjs/server'
 
 
-const AddTransformationTypePage = async ({ params: { type } }: SearchParamProps) => {
-  const transformation = transformationTypes[type];
+const AddTransformationTypePage:React.FC<SearchParamProps> = async ({ param }) => {
+  const transformation = transformationTypes[param?.type];
   const { userId } = await auth()
   
   if(!userId) redirect('/sign-in') 
@@ -20,15 +20,15 @@ const AddTransformationTypePage = async ({ params: { type } }: SearchParamProps)
   return (
     <>
       <Header 
-        title={transformation.title}
-        subtitle={transformation.subTitle}
+        title={transformation?.title}
+        subtitle={transformation?.subTitle}
       />
     
       <section className="mt-10">
       <TransformationForm
             action="Add" 
             userId={userDetails._id}
-            type={transformation.type as TransformationTypeKey}
+            type={transformation?.type as TransformationTypeKey}
             creditBalance={userDetails.creditBalance}
       />
       </section> 
