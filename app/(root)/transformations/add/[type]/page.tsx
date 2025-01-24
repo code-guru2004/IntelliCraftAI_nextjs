@@ -7,22 +7,17 @@ import { getUserById } from "@/lib/actions/user.action";
 import { redirect } from "next/navigation";
 import { auth } from '@clerk/nextjs/server';
 
-interface SearchParamProps {
-  params: {
-    id: string;
-    type: TransformationTypeKey;
-  };
-}
+
 
 const AddTransformationTypePage: React.FC<SearchParamProps> = async ({ params }) => {
-  const { type } = params; 
+  const { type } = await params; 
   const transformation = transformationTypes[type]; 
 
   const { userId } = await auth(); 
 
   if(!userId) redirect('/sign-in') 
   const userDetails = await getUserById(userId);
-
+ 
   return (
     <>
       <Header 
