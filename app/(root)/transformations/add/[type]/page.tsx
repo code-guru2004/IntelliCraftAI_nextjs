@@ -5,6 +5,9 @@ import { getUserById } from '@/lib/actions/user.action';
 import { auth } from '@clerk/nextjs/server';
 import { redirect } from 'next/navigation';
 
+interface SearchParamProps {
+  params: { id: string; type: TransformationTypeKey };
+}
 const AddTransformationTypePage :React.FC<SearchParamProps> = async ({ params}) => {
   const { userId } = await auth();
   const { type } = await params
