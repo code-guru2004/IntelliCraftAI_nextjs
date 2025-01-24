@@ -9,7 +9,7 @@ import { getUserById } from "@/lib/actions/user.action";
 import { redirect } from "next/navigation";
 import { auth } from '@clerk/nextjs/server'
 
-async function AddTransformationTypePage({ params: { id , type } }: SearchParamProps) {
+async function AddTransformationTypePage({ params: { id , type } ,searchParams }: SearchParamProps) {
   const transformation = transformationTypes[type];
   const { userId } = await auth()
   

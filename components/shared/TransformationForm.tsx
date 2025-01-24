@@ -36,9 +36,9 @@ export const formSchema = z.object({
 
 function TransformationForm({action  , data = null , userId , type , creditBalance} : TransformationFormProps) {
 
+  const transformationType = transformationTypes[type];
   const [Iamge, setIamge] = useState(data)
-    const transformationType = transformationTypes[type];
-
+  const [newTransformation, setNewTransformation] = useState<Transformations | null>(null)
     const initialValues= data && action === 'Update' ? {
         title: data?.title,
         aspectRatio: data?.aspectRatio,
