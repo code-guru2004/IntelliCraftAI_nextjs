@@ -28,6 +28,8 @@ import { aspectRatioOptions, defaultValues, transformationTypes } from "@/consta
 import { CustomField } from "./CustomField";
 import { AspectRatioKey, debounce, deepMergeObjects } from "@/lib/utils";
 import MediaUploader from "./MediaUploader";
+import TransformedImage from "./TransformedImage";
+import { updateCredits } from "@/lib/actions/user.action";
 
 export const formSchema = z.object({
     title: z.string(),
@@ -106,7 +108,7 @@ function TransformationForm({action  , data = null , userId , type , creditBalan
 
     setNewTransformation(null)
     startTransition( async()=>{
-      //await updateCredits(userId,creditFee)
+      await updateCredits(userId,-1)
     })
   }
 
@@ -197,7 +199,7 @@ function TransformationForm({action  , data = null , userId , type , creditBalan
           )
         }
 
-        <div className="media-upload-field">
+        <div className="media-uploader-field">
           <CustomField 
             control={form.control}
             name="publicId"
@@ -210,7 +212,16 @@ function TransformationForm({action  , data = null , userId , type , creditBalan
                 image={image}
                 type={type}
               />
+              
             )}
+          />
+          <TransformedImage
+            image={image}
+            type={type}
+            title={form.getValues().title}
+            isTransforming={isTransforming}
+            setIsTransforming={setIsTransforming}
+            transformationConfig={transformationConfig}
           />
         </div>
 
