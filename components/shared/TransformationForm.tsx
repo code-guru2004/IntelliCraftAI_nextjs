@@ -98,6 +98,26 @@ function TransformationForm({action  , data = null , userId , type , creditBalan
             )}
           />
         )}
+
+        {
+          (type === "remove" || type === "recolor") && (
+            <div className="prompt-field">
+              <CustomField 
+                control={form.control}
+                name="prompt"
+                formLabel={
+                  type === "remove" ? "Object To Remove" : "Object To Recolor"
+                }
+                className="w-full"
+                render={({field})=>(
+                  <Input
+                  
+                  />
+                )}
+              />
+            </div>
+          )
+        }
       </form>
     </Form>
   );

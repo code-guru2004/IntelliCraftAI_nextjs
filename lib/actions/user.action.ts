@@ -2,7 +2,8 @@
 
 import { revalidatePath } from "next/cache";
 import User from "../database/models/user.model";
-import connect from "../database/mongoose";
+import { connect } from "../database/mongoose";
+
 
 // Create User
 export async function createUser(user: any) {
