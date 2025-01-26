@@ -28,7 +28,7 @@ import { CustomField } from "./CustomField";
 
 export const formSchema = z.object({
     title: z.string(),
-    aspectRation: z.string().optional(),
+    aspectRatio: z.string().optional(),
     color:z.string().optional(),
     prompt:z.string().optional(),
     publicId: z.string(),
@@ -51,7 +51,7 @@ function TransformationForm({action  , data = null , userId , type , creditBalan
     resolver: zodResolver(formSchema),
     defaultValues: initialValues,
   });
-
+ 
   // 2. Define a submit handler.
   function onSubmit(values: z.infer<typeof formSchema>) {
     // Do something with the form values.
@@ -59,8 +59,9 @@ function TransformationForm({action  , data = null , userId , type , creditBalan
     console.log(values);
   }
   const onSelectFieldHandler = (value:string , onChangeField:(value:string)=> void) =>{
-    
+    //For the select field
   }
+
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
@@ -75,8 +76,8 @@ function TransformationForm({action  , data = null , userId , type , creditBalan
         {type === "fill" && (
           <CustomField
             control={form.control}
-            name="title"
-            formLabel="Image Title"
+            name="aspectRatio"
+            formLabel="Aspect Ratio"
             className="w-full"
             render={({ field }) => (
               <Select>
