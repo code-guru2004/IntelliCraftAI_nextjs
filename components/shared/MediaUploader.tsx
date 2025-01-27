@@ -90,6 +90,7 @@ const MediaUploader = ({
                 />
               </div>
               <p className="p-14-medium">Click here to upload image</p>
+              <p className="text-[11px] leading-[120%] ">Note: Image should be under 3MB</p>
             </div>
           )}
         </div>
