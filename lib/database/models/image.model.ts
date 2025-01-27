@@ -36,7 +36,7 @@ const imageSchema = new Schema({
         required:true,
     },
     secureURL:{
-        type:URL,
+        type:String,
         required:true,
     },
     width:{
@@ -50,7 +50,7 @@ const imageSchema = new Schema({
         type:Object,
     },
     transformationUrl: {
-        type:URL,
+        type:String,
     },
     aspectRatio:{
         type:String,
