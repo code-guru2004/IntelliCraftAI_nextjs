@@ -67,10 +67,10 @@ function TransformedImage({
                         isTransforming && (
                             <div className="transforming-loader">
                                 <Image 
-                                     src="/assets/icons/spinner.svg"
-                                     width={50}
-                                     height={50}
-                                     alt="spinner"
+                                    src="/assets/icons/spinner.svg"
+                                    width={50}
+                                    height={50}
+                                    alt="spinner"
                                 />
                             </div>
                         )
